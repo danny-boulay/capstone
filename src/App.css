@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;700&family=Markazi+Text:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@200;300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Markazi+Text:wght@400;500;600;700&display=swap');
 
 /*Global*/
 :root {
@@ -30,6 +31,24 @@ a {
   text-decoration: none;
 }
 
+button {
+  padding: 8px 20px; /* Espacement autour du texte */
+  font-size: 16px;
+  background-color:var(--primary-color-2);
+  color: var(--highlight-color-2);
+  border: none;
+  border-radius: 24px;
+  cursor: pointer;
+  width: fit-content; /* La largeur du bouton s'ajuste automatiquement au texte */
+  font-family: var(--font-primary);
+  font-weight: 500;
+  transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: var(--highlight-color-1);
+}
+
 /*Header*/
 .Header {
   display: flex;
@@ -38,7 +57,7 @@ a {
   padding: 1rem 5vw;
   background-color: white;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  gap: 5vw; /* Réduit l’espace entre le logo et la nav */
+  gap: 5vw;
 }
 
 /*Logo*/
@@ -58,10 +77,6 @@ a {
   margin: 0;
 }
 
-.Navbar ul li {
-  display: inline;
-}
-
 .Navbar ul li a {
   color: var(--highlight-color-2);
   font-weight: 400;
@@ -71,6 +86,151 @@ a {
 
 .Navbar ul li a:hover {
   color: var(--primary-color-2); /* Changement de couleur au hover */
+}
+
+/* Menu Hamburger */
+.Hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Media Query pour mobile*/
+@media (max-width: 768px) {
+  .Hamburger {
+    display: block;
+    color: var(--primary-color-1);
+  }
+
+  .Header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .Navbar {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background-color: white;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 100; /* Assure que le menu passe au-dessus */
+  }
+
+  .Navbar.open {
+    max-height: 300px; /* Une valeur assez grande pour contenir tout le menu */
+    padding: 1rem 0;
+  }
+
+  .Navbar ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 0;
+    width: 100%;
+  }
+
+  .Navbar ul li {
+    width: 100%;
+    text-align: center;
+  }
+
+  .Navbar ul li a {
+    display: block;
+    padding: 10px;
+    width: 100%;
+  }
+}
+
+/*SubHeader*/
+.SubHeader {
+  display: grid;
+  grid-template-columns: 1fr minmax(300px, 1200px) 1fr; /* Deux colonnes égales */
+  gap: 2rem;
+  background-color: var(--primary-color-1);
+  color: var(--highlight-color-1);
+}
+.Content {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Description + Image */
+  gap: 2rem;
+  align-items: center;
+  max-width: 1200px; /* Évite que ça s'étale trop */
+  margin: 0 auto; /* Centre le contenu */
+  padding: 3rem 0; /* Garde un bon espacement vertical */
+}
+
+.SubHeader h1 {
+  color: var(--primary-color-2);
+  font-size: 4.5rem;
+  font-weight: 300;
+  margin: 0;
+}
+
+.SubHeader h2 {
+  color: var(--highlight-color-1);
+  font-size: 2.5rem;
+  font-weight: 300;
+  margin: 0;
+}
+
+.SubHeader button {
+  margin: 4.5rem 0 0 0;
+}
+
+.Description {
+  display: flex;
+  flex-direction: column;
+  font-weight: 300;
+  padding: 0 1.5rem;
+}
+
+.ImageContainer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.SubHeaderImage {
+  border-radius: 24px; /* Optionnel : pour un look plus arrondi */
+  aspect-ratio: 1 / 1; /* Force un carré (hauteur = largeur) */
+  object-fit: cover; /* Zoom et coupe pour remplir sans déformer */
+  width: 425px;
+  transform: translateY(+20%);
+  position: absolute;
+}
+
+/* Responsive pour mobile */
+@media (max-width: 768px) {
+  .SubHeader {
+    grid-template-columns: 1fr; /* Plus de containers vides */
+  }
+
+  .Content {
+    grid-template-columns: 1fr; /* Empile le contenu */
+    text-align: center;
+    padding: 1rem 5vw; /* Remet un peu de padding pour éviter que le contenu touche les bords */
+  }
+
+  .SubHeaderImage {
+    position: static; /* Supprime l'effet de dépassement */
+    transform: none; /* Supprime la translation */
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .SubHeader button {
+    margin: auto; /* Centre le bouton */
+  }
 }
 
 /*Main*/
@@ -91,9 +251,12 @@ a {
   color: var(--highlight-color-1);
   display: flex;
   justify-content: center;
-  padding: 5rem 0rem;
-  gap: 7.5rem;
-  text-align: left;;
+  padding: 3rem 5rem;
+  gap: 5rem;
+}
+
+.FooterLogo {
+  height: 17.5rem;
 }
 
 .Footer ul {
@@ -115,4 +278,17 @@ a {
 .Footer h1 {
   font-weight: 400;
   margin: 0;
+}
+
+/* Media query pour mobile */
+@media (max-width: 768px) {
+  .Footer {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+  }
+
+  .FooterLogo {
+    height: 10rem; /* Encore plus petit en mobile */
+  }
 }
