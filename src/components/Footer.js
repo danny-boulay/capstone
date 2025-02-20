@@ -6,7 +6,7 @@ function Footer(){
                 <img src={footer_logo} className="FooterLogo" alt="logo" />
             </div>
             <div>
-                <h3>Navigation</h3>
+                <h1>Navigation</h1>
                 <ul>
                     <li><a href="/">Home</a></li>
                     <li><a href="/">About</a></li>
@@ -17,7 +17,7 @@ function Footer(){
                 </ul>
             </div>
             <div>
-                <h3>Contacts</h3>
+                <h1>Contacts</h1>
                 <ul>
                     <li><a href="/">Address</a></li>
                     <li><a href="/">Phone Number</a></li>
@@ -25,7 +25,7 @@ function Footer(){
                 </ul>
             </div>
             <div>
-                <h3>Social Media</h3>
+                <h1>Social Media</h1>
                 <ul>
                     <li><a href="/">Instagram</a></li>
                     <li><a href="/">Facebook</a></li>

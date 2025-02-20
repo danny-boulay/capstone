@@ -1,3 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;700&family=Markazi+Text:wght@400;700&display=swap');
+
+/*Global*/
+:root {
+  --font-primary: 'Karla', sans-serif;
+  --font-secondary: 'Markazi Text', serif;
+  --primary-color-1: #495e57;
+  --primary-color-2: #f4ce14;
+  --secondary-color-1: #ee9972;
+  --secondary-color-2: #FBDABB;
+  --highlight-color-1: #EDEFEE;
+  --highlight-color-2: #333;
+}
+
+body {
+  font-family: var(--font-primary);
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-secondary);
+}
+
 ul {
   list-style: none;
 }
@@ -39,32 +63,32 @@ a {
 }
 
 .Navbar ul li a {
-  color: #333;
+  color: var(--highlight-color-2);
   font-weight: 400;
   font-size: 1.1rem;
   transition: color 0.3s ease-in-out;
 }
 
 .Navbar ul li a:hover {
-  color: #F4CE14; /* Changement de couleur au hover */
+  color: var(--primary-color-2); /* Changement de couleur au hover */
 }
 
 /*Main*/
 .Main {
-  background-color: #edefee;
+  background-color: var(--highlight-color-1);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: #333333;
+  color: var(--highlight-color-2);
 }
 
 /*Footer*/
 .Footer {
-  background-color: #495e57;
-  color: #edefee;
+  background-color: var(--primary-color-1);
+  color: var(--highlight-color-1);
   display: flex;
   justify-content: center;
   padding: 5rem 0rem;
@@ -80,7 +104,7 @@ a {
 }
 
 .Footer ul li a {
-  color: #edefee;
+  color: var(--highlight-color-1);
   transition: color 0.3s ease-in-out;
 }
 
@@ -88,7 +112,7 @@ a {
   color: #fff;
 }
 
-.Footer h3 {
-  font-weight: 500;
+.Footer h1 {
+  font-weight: 400;
   margin: 0;
 }
