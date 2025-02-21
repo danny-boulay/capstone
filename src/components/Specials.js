@@ -32,23 +32,23 @@ const specials = [
   
   function Specials() {
     return (
-        <div className="specials-wrapper">
+        <div className="Specials">
             <div className="EmptyContainer"></div> {/* Container gauche */}
-            <div className="specials">
-                <div className="specials-header">
+            <div className="SpecialsContainer">
+                <div className="SpecialsHeader">
                     <h2>This week’s specials!</h2>
                     <button className="order-button">Order Online</button>
                 </div>
-                <div className="specials-container">
+                <div className="SpecialsCards">
                     {specials.map((item) => (
-                        <div key={item.id} className="special-card">
-                            <img src={item.image} alt={item.title} className="special-image" />
-                            <div className="special-info">
-                                <div className="special-title">
+                        <div key={item.id} className="SpecialCard">
+                            <img src={item.image} alt={item.title} className="SpecialImage" />
+                            <div className="SpecialInfo">
+                                <div className="SpecialTitle">
                                     <h3>{item.title}</h3>
-                                    <span className="special-price">{item.price}</span>
+                                    <span className="SpecialPrice">{item.price}</span>
                                 </div>
-                                <p className="special-description">{item.description}</p>
+                                <p className="SpecialDescription">{item.description}</p>
                                 <button className="delivery-button">Order Delivery 🚴‍♂️</button>
                             </div>
                         </div>
