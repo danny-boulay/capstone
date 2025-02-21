@@ -3,14 +3,14 @@ import React from 'react';
 import Header from './components/Header';
 import Main from './components/Main';
 import Footer from './components/Footer';
-import SubHeader from './components/SubHeader';
+import HeroSection from './components/HeroSection';
 import Specials from './components/Specials';
 
 function App() {
   return (
     <>
       <Header/>
-      <SubHeader/>
+      <HeroSection/>
       <Specials/>
       <Main/>
       <Footer/>

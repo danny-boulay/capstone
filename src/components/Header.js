@@ -7,16 +7,20 @@ function Header() {
     const [isOpen, setIsOpen] = useState(false);
     return (
         <header className="Header">
-            <div>
-                <img src={logo} className="Logo" alt="logo" />
+            <div className="EmptyContainer"></div> {/* Container gauche */}
+            <div className="NavContainer">
+                <div>
+                    <img src={logo} className="Logo" alt="logo" />
+                </div>
+
+                {/* Bouton hamburger */}
+                <button className="Hamburger" onClick={() => setIsOpen(!isOpen)}>
+                    {isOpen ? <X size={30} /> : <Menu size={30} />}
+                </button>
+
+                <Nav isOpen={isOpen}/>
             </div>
-
-            {/* Bouton hamburger */}
-            <button className="Hamburger" onClick={() => setIsOpen(!isOpen)}>
-                {isOpen ? <X size={30} /> : <Menu size={30} />}
-            </button>
-
-            <Nav isOpen={isOpen}/>
+            <div className="EmptyContainer"></div> {/* Container droit */}
         </header>
     );
 }
