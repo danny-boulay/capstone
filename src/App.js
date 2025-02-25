@@ -1,11 +1,11 @@
 import './App.css';
 import React from 'react';
 import Header from './components/Header';
-import Main from './components/Main';
 import Footer from './components/Footer';
 import HeroSection from './components/HeroSection';
 import Specials from './components/Specials';
 import Reviews from "./components/Reviews";
+import About from "./components/About";
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
       <HeroSection/>
       <Specials/>
       <Reviews/>
-      <Main/>
+      <About/>
       <Footer/>
     </>
   );

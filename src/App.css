@@ -31,6 +31,10 @@ a {
   text-decoration: none;
 }
 
+p {
+  line-height: 1.5;
+}
+
 button {
   padding: 8px 20px; /* Espacement autour du texte */
   font-size: 16px;
@@ -455,16 +459,97 @@ button:hover {
   }
 }
 
-/*Main*/
-.Main {
-  background-color: var(--highlight-color-1);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+/*About*/
+.About {
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
+  padding: 9rem 0 12rem;
+}
+
+.AboutContainer {
+  display: grid;
+  grid-template-columns: 50% 50%; /* Description + Image */
+  gap: 1rem;
+}
+
+.About h1 {
+  color: var(--primary-color-1);
+  font-size: 4.5rem;
+  font-weight: 300;
+  margin: 0;
+}
+
+.About h2 {
   color: var(--highlight-color-2);
+  font-size: 2.5rem;
+  font-weight: 300;
+  margin: 0;
+}
+
+.AboutImageContainer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.AboutImage {
+  border-radius: 24px; /* Optionnel : pour un look plus arrondi */
+  aspect-ratio: 1 / 1; /* Force un carré (hauteur = largeur) */
+  object-fit: cover; /* Zoom et coupe pour remplir sans déformer */
+  width: clamp(200px, 20vw, 350px); /* Min 150px, idéalement 20vw, max 350px */
+  transform: translateY(+30%);
+  position: absolute;
+  z-index: 1000;
+}
+
+.AboutImage2 {
+  border-radius: 24px; /* Optionnel : pour un look plus arrondi */
+  aspect-ratio: 1 / 1; /* Force un carré (hauteur = largeur) */
+  object-fit: cover; /* Zoom et coupe pour remplir sans déformer */
+  width: clamp(200px, 20vw, 350px); /* Min 200px, idéalement 20vw, max 425px */
+  transform: translateY(-10%) translateX(+50%);
+  position: absolute;
+}
+
+@media (max-width: 1024px) {
+  .About {
+    padding: 5rem 0;
+    grid-template-columns: 10% 80% 10%;
+  }
+}
+
+@media (max-width: 768px) {
+  .About {
+    padding: 2.5rem 1rem 5rem;
+    grid-template-columns: 1fr;
+  }
+
+  .AboutContainer {
+    grid-template-columns: 1fr;
+  }
+
+  .AboutDescription h1, .AboutDescription h2, .AboutDescription p {
+    text-align: center;
+  }
+
+  .AboutImageContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .AboutImage {
+    position: relative;
+    transform: translate(0);
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .AboutImage2 {
+    display: none;
+  }
 }
 
 /*Footer*/
@@ -530,6 +615,6 @@ button:hover {
   }
 
   .FooterLogo {
-    height: 10rem; /*Plus petit en mobile */
+    height: 10rem;
   }
 }
