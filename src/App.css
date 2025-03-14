@@ -620,6 +620,12 @@ button:hover {
 }
 
 /*Booking Form*/
+.BookingTitle {
+  text-align: center;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 1rem 0 0;
+}
 
 .FormContainer {
   display: flex;

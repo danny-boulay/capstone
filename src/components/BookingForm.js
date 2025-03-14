@@ -1,22 +1,38 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
-const BookingForm = ({ date, setDate, time, setTime, guests, setGuests, occasion, setOccasion, handleSubmit }) => {
+const BookingForm = ({ availableTimes, dispatch }) => {
+    const [date, setDate] = useState("");
+    const [time, setTime] = useState("");
+    const [guests, setGuests] = useState(1);
+    const [occasion, setOccasion] = useState("Birthday");
 
-  // Liste des heures disponibles (simulée pour l'instant)
-  const [availableTimes] = useState(["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"]);
+    const handleDateChange = (e) => {
+        const selectedDate = e.target.value;
+        setDate(selectedDate);
+        console.log(dispatch); // Vérifie que dispatch est bien une fonction
+        dispatch({ type: "UPDATE_DATE", payload: selectedDate });
+    };
+    
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log({ date, time, guests, occasion });
+        alert(`Reservation Details:
+            Date: ${date}
+            Time: ${time}
+            Guests: ${guests}
+            Occasion: ${occasion}`);
+    };
 
   return (
     <div className="FormContainer">
         <form className="BookingForm" onSubmit={handleSubmit}>
             <label htmlFor="res-date">Choose date</label>
-            <input type="date" id="res-date" value={date} onChange={(e) => setDate(e.target.value)} />
+            <input type="date" id="res-date" value={date} onChange={handleDateChange} />
 
             <label htmlFor="res-time">Choose time</label>
             <select id="res-time" value={time} onChange={(e) => setTime(e.target.value)}>
-                {availableTimes.map((t) => (
-                <option key={t} value={t}>
-                    {t}
-                </option>
+                {(availableTimes || []).map((t) => (
+                    <option key={t} value={t}>{t}</option>
                 ))}
             </select>
 
