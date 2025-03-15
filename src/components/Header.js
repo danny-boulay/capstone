@@ -18,7 +18,7 @@ function Header() {
                     {isOpen ? <X size={30} /> : <Menu size={30} />}
                 </button>
 
-                <Nav isOpen={isOpen}/>
+                <Nav isOpen={isOpen} setIsOpen={setIsOpen}/>
             </div>
             <div className="EmptyContainer"></div> {/* Container droit */}
         </header>
