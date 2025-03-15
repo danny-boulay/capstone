@@ -12,7 +12,7 @@ const BookingForm = ({ availableTimes, dispatch }) => {
         console.log(dispatch); // Vérifie que dispatch est bien une fonction
         dispatch({ type: "UPDATE_DATE", payload: selectedDate });
     };
-    
+
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log({ date, time, guests, occasion });
