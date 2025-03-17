@@ -33,6 +33,7 @@ a {
 
 p {
   line-height: 1.5;
+  
 }
 
 button {
@@ -625,13 +626,15 @@ button:hover {
   background-color: #f4f4f4;
   margin: 0;
   padding: 1rem 0 0;
+  font-size: 2.5rem;
 }
 
 .FormContainer {
+  flex-direction: column;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50vh; /* Pleine hauteur de l'écran */
+  height: 70vh;
   background-color: #f4f4f4;
   padding: 1rem;;
 }
@@ -658,13 +661,29 @@ select {
   font-size: 16px;
 }
 
-input[type="submit"] {
-  background-color: var(--primary-color-1);
-  color: white;
-  cursor: pointer;
-  transition: 0.3s;
+/*Confirmed Page*/
+.ConfirmedPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  background-color: #f4f4f4;
+  padding: 1rem;
 }
 
-input[type="submit"]:hover {
-  background-color: var(--primary-color-2);
+.ConfirmedPage h2 {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  font-size: 2.5rem;
+  color: var(--highlight-color-2)
+}
+
+.ConfirmedPage p {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  font-size: 1.25rem;
+  color: var(--highlight-color-2)
 }

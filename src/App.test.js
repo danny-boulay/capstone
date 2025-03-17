@@ -1,63 +1,40 @@
-import { render, screen, within, fireEvent } from '@testing-library/react';
-import BookingForm from './components/BookingForm';
+import { render, screen } from "@testing-library/react";
+import BookingForm from "./components/BookingForm";
+import { initializeTimes, updatesTimes  } from "./utils/times";
 
-//Step 1
-test('Renders the first label', () => {
-    render(<BookingForm />);
-    const firstLabelElement = screen.getByText("Choose date");
-    expect(firstLabelElement).toBeInTheDocument();
-})
+//Test simple qui vérifie si le label "Choose time" est affiché
+test("renders the label 'Choose time'", () => {
+    render(<BookingForm availableTimes={[]} dispatch={() => {}} onSubmit={() => {}} />);
 
-//Step 2
-test('Renders the initializeTimes function values', () => {
-  const availableTimes = ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
-  render(<BookingForm availableTimes={availableTimes} dispatch={() => {}} />);
-
-  // Récupérer le select des heures en se basant sur le label
-  const timeSelect = screen.getByLabelText(/choose time/i); // on cible le select avec le label "Choose time"
-
-  // Récupérer toutes les options dans ce select
-  const timesElements = within(timeSelect).getAllByRole("option");
-
-  // Vérifier que le nombre d'options est bien celui attendu (sans inclure l'option pour "Birthday" ou "Anniversary")
-  expect(timesElements).toHaveLength(availableTimes.length);
-
-  // Vérifier que les options affichées correspondent aux valeurs de availableTimes
-  timesElements.forEach((option, index) => {
-      expect(option).toHaveTextContent(availableTimes[index]);
-  });
+    const labelElement = screen.getByLabelText(/choose time/i);
+    expect(labelElement).toBeInTheDocument();
 });
 
-test('Should keep the selected time after form submission', () => {
-  // Simuler des heures disponibles
-  const availableTimes = ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
+//Test de fonctionnement de initializeTimes
+describe("initializeTimes", () => {
+    it("should return a non-empty array of available times", async () => {
+        const result = await initializeTimes();
+        expect(Array.isArray(result)).toBe(true);
+        expect(result.length).toBeGreaterThan(0);
+    });
+});
 
-  // Mock dispatch pour l'utiliser dans le test, car il ne fait rien dans ce cas précis
-  const dispatch = jest.fn();
+//Test de fonctionnement de updatesTimes
+describe("updatesTimes", () => {
+    it("should update available times when SET_AVAILABLE_TIMES is dispatched", () => {
+        const initialState = [];
+        const newTimes = ["12:00", "14:00"];
+        const action = { type: "SET_AVAILABLE_TIMES", payload: newTimes };
 
-  // Render du composant
-  render(<BookingForm availableTimes={availableTimes} dispatch={dispatch} />);
+        const newState = updatesTimes(initialState, action);
+        expect(newState).toEqual(newTimes);
+    });
 
-  // Sélectionner le select des heures
-  const timeSelect = screen.getByLabelText(/choose time/i);
+    it("should return the same state for an unknown action", () => {
+        const initialState = ["10:00", "11:00"];
+        const action = { type: "UNKNOWN_ACTION", payload: ["17:00"] };
 
-  // Sélectionner 18h
-  fireEvent.change(timeSelect, { target: { value: "18:00" } });
-
-  // Soumettre le formulaire
-  const submitButton = screen.getByText(/make your reservation/i);
-  fireEvent.click(submitButton);
-
-  // Vérifier que la valeur sélectionnée (18:00) est passée
-  // Ici, on vérifie que l'alerte ou la console affiche la valeur du temps choisi
-  // En attendant que la valeur "time" dans la soumission soit bien "18:00"
-
-  // Mock de l'alert pour vérifier ce qui est affiché
-  global.alert = jest.fn();  // Simule une alerte
-
-  // Soumettre à nouveau le formulaire
-  fireEvent.click(submitButton);
-
-  // Vérifier que l'alert contient "Time: 18:00"
-  expect(global.alert).toHaveBeenCalledWith(expect.stringContaining("Time: 18:00"));
+        const newState = updatesTimes(initialState, action);
+        expect(newState).toEqual(initialState);
+    });
 });

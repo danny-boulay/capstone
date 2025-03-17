@@ -34,5 +34,8 @@ export const fetchAPI = function (date) {
 };
 
 export const submitAPI = function (formData) {
-    return true;
+    return new Promise((resolve) => {
+        console.log("Submitting form data:", formData);
+        setTimeout(() => resolve(true), 1000); // Simule un délai de traitement
+    });
 };

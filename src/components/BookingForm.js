@@ -1,5 +1,5 @@
 import React, {  useState } from "react";
-import { fetchAPI } from "../utils/api";
+import { fetchAPI} from "../utils/api";
 
 const BookingForm = ({ availableTimes, dispatch, onSubmit  }) => {
     const [date, setDate] = useState("");
@@ -8,12 +8,11 @@ const BookingForm = ({ availableTimes, dispatch, onSubmit  }) => {
     const [occasion, setOccasion] = useState("Birthday");
 
     const handleDateChange = (e) => {
-        const selectedDate = new Date(e.target.value); // ✅ Convertir en objet Date
-        setDate(e.target.value); // ✅ Mettre à jour le state local
-
+        const selectedDate = new Date(e.target.value);
+        setDate(e.target.value);
         dispatch({ type: "UPDATE_DATE", payload: selectedDate });
 
-        fetchAvailableTimes(selectedDate).then((times) => {
+        fetchAPI(selectedDate).then((times) => {
             dispatch({ type: "SET_AVAILABLE_TIMES", payload: times });
         });
     };
@@ -21,28 +20,18 @@ const BookingForm = ({ availableTimes, dispatch, onSubmit  }) => {
     // Soumettre la réservation
     const handleSubmit = (e) => {
         e.preventDefault();
-        const booking = { date, time, guests, occasion };
-        onSubmit(booking); // Appeler la fonction pour sauvegarder la réservation
-    };
-
-     // Récupérer les horaires disponibles via l'API
-     const fetchAvailableTimes = (date) => {
-        return fetchAPI(date) // Utilise la fonction fetchAPI pour obtenir les horaires disponibles
-            .then((times) => times)
-            .catch((error) => {
-                console.error("Error fetching available times:", error);
-                return [];
-            });
+        onSubmit({ date, time, guests, occasion });
     };
 
     return (
         <div className="FormContainer">
+            <h1 className="BookingTitle">Book a Table</h1>
             <form className="BookingForm" onSubmit={handleSubmit}>
                 <label htmlFor="res-date">Choose date</label>
-                <input type="date" id="res-date" value={date} onChange={handleDateChange} />
+                <input type="date" id="res-date" value={date} onChange={handleDateChange} required/>
 
                 <label htmlFor="res-time">Choose time</label>
-                <select id="res-time" value={time} onChange={(e) => setTime(e.target.value)}>
+                <select id="res-time" value={time} onChange={(e) => setTime(e.target.value)} required>
                     {(availableTimes || []).map((t) => (
                         <option key={t} value={t}>{t}</option>
                     ))}
@@ -57,6 +46,7 @@ const BookingForm = ({ availableTimes, dispatch, onSubmit  }) => {
                     max="10"
                     value={guests}
                     onChange={(e) => setGuests(Number(e.target.value))}
+                    required
                 />
 
                 <label htmlFor="occasion">Occasion</label>
@@ -65,7 +55,7 @@ const BookingForm = ({ availableTimes, dispatch, onSubmit  }) => {
                     <option>Anniversary</option>
                 </select>
 
-                <input type="submit" value="Make Your Reservation" />
+                <button type="submit">Make Your Reservation</button>
             </form>
         </div>
   );
