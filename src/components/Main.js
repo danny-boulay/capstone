@@ -10,11 +10,11 @@ const Main = () => {
 
     useEffect(() => {
         const fetchInitialTimes = async () => {
-            const times = await initializeTimes(); // 🔥 Appel de la fonction async
+            const times = await initializeTimes(); // Appel de la fonction async
             dispatch({ type: "SET_AVAILABLE_TIMES", payload: times });
         };
         fetchInitialTimes();
-    }, []);
+    }, []); // Le tableau vide [] signifie que ce useEffect ne se déclenche qu'une fois lors du montage du composant
 
     const submitForm = async (formData) => {
         try {

@@ -33,7 +33,6 @@ a {
 
 p {
   line-height: 1.5;
-  
 }
 
 button {
@@ -52,6 +51,19 @@ button {
 
 button:hover {
   background-color: var(--highlight-color-1);
+}
+
+button:disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+  border: 1px solid #aaa;
+  opacity: 0.6;
+}
+
+button:disabled:hover {
+  background-color: #ccc;
+  cursor: not-allowed;
 }
 
 /*Header*/
@@ -625,43 +637,58 @@ button:hover {
   text-align: center;
   background-color: #f4f4f4;
   margin: 0;
-  padding: 1rem 0 0;
+  padding: 0 0 1rem;
   font-size: 2.5rem;
 }
 
 .FormContainer {
-  flex-direction: column;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 70vh;
+  height: 80vh;
   background-color: #f4f4f4;
-  padding: 1rem;;
 }
 
-form {
+.BookingForm {
   display: grid;
-  gap: 20px;
+  gap: 1rem;
   max-width: 350px;
-  padding: 30px;
+  padding: 2rem;
   background: white;
-  border-radius: 10px;
+  border-radius: 14px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Style for labels */
 label {
   font-weight: bold;
+  font-size: 1rem;
+  color: #333;
 }
 
+/* Style for input and select fields */
 input,
-select {
-  padding: 8px;
+select,
+textarea {
+  padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-/*Confirmed Page*/
+/* Affiche le texte d'erreur en rouge */
+.error {
+  color: red; /* Texte d'erreur en rouge */
+  font-size: 0.875rem;
+}
+.error-input {
+  border: 1.9px solid red;
+}
+
+/* Confirmed Page */
 .ConfirmedPage {
   display: flex;
   flex-direction: column;
@@ -677,7 +704,7 @@ select {
   margin: 0;
   padding: 0;
   font-size: 2.5rem;
-  color: var(--highlight-color-2)
+  color: var(--highlight-color-2);
 }
 
 .ConfirmedPage p {
@@ -685,5 +712,5 @@ select {
   margin: 0;
   padding: 0;
   font-size: 1.25rem;
-  color: var(--highlight-color-2)
+  color: var(--highlight-color-2);
 }
