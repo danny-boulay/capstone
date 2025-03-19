@@ -3,7 +3,7 @@ import mario_and_adrian_2 from '../assets/Mario_and_Adrian_2.jpg';
 
 function About() {
     return (
-        <div className="About">
+        <section className="About" aria-labelledby="about-header">
             <div className="EmptyContainer"></div> {/* Container gauche */}
             <div className="AboutContainer">
                 <div className="AboutDescription">
@@ -12,12 +12,12 @@ function About() {
                     <p>Little Lemon is a charming neighborhood bistro that serves simple food and classic cocktails in a lively but casual environment the restaurant features a locally sourced menu with daily specials. Little Lemon is a charming neighborhood bistro that serves simple food and classic cocktails in a lively but casual environment the restaurant features a locally sourced menu with daily specials.</p>
                 </div>
                 <div className="AboutImageContainer">
-                    <img src={mario_and_adrian_1} alt="mario_and_adrian_1" className="AboutImage" />
-                    <img src={mario_and_adrian_2} alt="mario_and_adrian_2" className="AboutImage2" />
+                    <img src={mario_and_adrian_1} alt="Mario and Adrian, the owners of Little Lemon" className="AboutImage" />
+                    <img src={mario_and_adrian_2} alt="Mario and Adrian preparing food" className="AboutImage2" />
                 </div>
             </div>
             <div className="EmptyContainer"></div> {/* Container droit */}
-        </div>
+        </section>
     );
 }
 

@@ -5,16 +5,21 @@ import { Menu, X } from "lucide-react"; // Icônes pour le menu
 
 function Header() {
     const [isOpen, setIsOpen] = useState(false);
+
     return (
-        <header className="Header">
+        <header className="Header" aria-label="Website header">
             <div className="EmptyContainer"></div> {/* Container gauche */}
             <div className="NavContainer">
                 <div>
-                    <img src={logo} className="Logo" alt="logo" />
+                    <img src={logo} className="Logo" alt="Little Lemon logo" />
                 </div>
 
                 {/* Bouton hamburger */}
-                <button className="Hamburger" onClick={() => setIsOpen(!isOpen)}>
+                <button
+                    className="Hamburger"
+                    onClick={() => setIsOpen(!isOpen)}
+                    aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
+                >
                     {isOpen ? <X size={30} /> : <Menu size={30} />}
                 </button>
 

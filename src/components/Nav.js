@@ -2,7 +2,10 @@ import { Link } from "react-router-dom";
 
 const Nav = ({ isOpen, setIsOpen }) => {
     return (
-      <nav className={`Navbar ${isOpen ? "open" : ""}`}>
+      <nav
+        className={`Navbar ${isOpen ? "open" : ""}`}
+        aria-label="Principal navigation"
+      >
         <ul>
             <li><Link to="/" onClick={() => setIsOpen(false)}>Home</Link></li>
             <li><Link to="/" onClick={() => setIsOpen(false)}>About</Link></li>

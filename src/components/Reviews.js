@@ -28,9 +28,12 @@ const reviews = [
   },
 ];
 
+/*
+Seul component utilisant la librairie MUI
+*/
 const Reviews = () => {
     return (
-      <div className="Reviews">
+      <section className="Reviews" aria-labelledby="reviews-header">
         <div className="EmptyContainer"></div> {/* Container gauche */}
         <div className="ReviewsContainer">
           <div className="ReviewsHeader">
@@ -38,10 +41,10 @@ const Reviews = () => {
           </div>
           <div className="ReviewsCards"> {/* Conteneur flex-row des Cards */}
             {reviews.map((review, index) => (
-              <div key={index} className="ReviewCard"> {/* Unité individuelle */}
+              <article key={index} className="ReviewCard" aria-label={`Review by ${review.reviewer}`} > {/* Unité individuelle */}
                 <Card sx={{ maxWidth: 400, borderRadius: 3, boxShadow: 3, p: 2 }}>
                   <CardContent>
-                    <Rating value={review.rating} precision={0.5} readOnly />
+                    <Rating value={review.rating} precision={0.5} readOnly aria-label={`Rating: ${review.rating} stars`} />
                     <Typography sx={{ fontSize: '2rem', fontWeight: 'bold', fontFamily: "'Markazi Text', sans-serif" }}>
                       {review.title}
                     </Typography>
@@ -49,7 +52,7 @@ const Reviews = () => {
                       {review.body}
                     </Typography>
                     <Box sx={{ display: 'flex', alignItems: 'center', mt: 2 }}>
-                      <Avatar src={review.avatar} alt={review.reviewer} sx={{ width: 32, height: 32, mr: 1 }} />
+                      <Avatar src={review.avatar} alt={`Avatar of ${review.reviewer}`} sx={{ width: 32, height: 32, mr: 1 }} />
                       <Box>
                         <Typography sx={{ fontSize: '1rem', fontFamily: "'Karla', sans-serif" }}>
                           {review.reviewer}
@@ -61,13 +64,13 @@ const Reviews = () => {
                     </Box>
                   </CardContent>
                 </Card>
-              </div>
+              </article>
             ))}
           </div>
         </div>
         <div className="EmptyContainer"></div> {/* Container droit */}
-      </div>
+      </section>
     );
   };
-  
+
   export default Reviews;
