@@ -19,7 +19,7 @@ const BookingForm = ({ availableTimes, dispatch, onSubmit  }) => {
     });
 
     return (
-        <div className="FormContainer">
+        <section className="FormContainer" aria-labelledby="booking-title">
             <h1 className="BookingTitle">Book a Table</h1>
             <Formik
                 initialValues={{
@@ -37,13 +37,15 @@ const BookingForm = ({ availableTimes, dispatch, onSubmit  }) => {
                 }}
             >
                 {({ values, setFieldValue, isValid, dirty, errors, touched }) => (
-                    <Form className="BookingForm">
+                    <Form className="BookingForm" aria-describedby="booking-description">
                         <label htmlFor="name">Reservation Name</label>
                         <Field
                             type="text"
                             id="name"
                             name="name"
                             required
+                            aria-required="true"
+                            aria-invalid={errors.name && touched.name ? "true" : "false"}
                             className={`input ${touched.name && errors.name ? "error-input" : ""}`}
                         />
                         <ErrorMessage name="name" component="div" className="error" />
@@ -54,12 +56,14 @@ const BookingForm = ({ availableTimes, dispatch, onSubmit  }) => {
                             id="date"
                             name="date"
                             min={today}
+                            required
+                            aria-required="true"
+                            aria-invalid={errors.date && touched.date ? "true" : "false"}
                             onChange={(e) => {
                                 const selectedDate = e.target.value;
                                 setFieldValue("date", selectedDate);
                                 dispatch({ type: "UPDATE_DATE", payload: selectedDate });
                             }}
-                            required
                             className={`input ${touched.date && errors.date ? "error-input" : ""}`}
                         />
                         <ErrorMessage name="date" component="div" className="error" />
@@ -70,6 +74,7 @@ const BookingForm = ({ availableTimes, dispatch, onSubmit  }) => {
                             id="time"
                             name="time"
                             required
+                            aria-required="true"
                             className={`input ${touched.time && errors.time ? "error-input" : ""}`}>
                             <option value="">Select a time</option>
                             {(availableTimes || []).map((t) => (
@@ -88,6 +93,8 @@ const BookingForm = ({ availableTimes, dispatch, onSubmit  }) => {
                             min="2"
                             max="10"
                             required
+                            aria-required="true"
+                            aria-invalid={errors.guests && touched.guests ? "true" : "false"}
                             onChange={(e) => setFieldValue("guests", parseInt(e.target.value, 10))}
                             className={`input ${touched.guests && errors.guests ? "error-input" : ""}`}
                         />
@@ -99,6 +106,7 @@ const BookingForm = ({ availableTimes, dispatch, onSubmit  }) => {
                             id="occasion"
                             name="occasion"
                             required
+                            aria-required="true"
                             className={`input ${touched.occasion && errors.occasion ? "error-input" : ""}`}
                         >
                             <option value="Dinner">Dinner</option>
@@ -107,13 +115,17 @@ const BookingForm = ({ availableTimes, dispatch, onSubmit  }) => {
                         </Field>
                         <ErrorMessage name="occasion" component="div" className="error" />
 
-                        <button type="submit" disabled={!(isValid && dirty)}>
+                        <button
+                            type="submit"
+                            disabled={!(isValid && dirty)}
+                            aria-disabled={!(isValid && dirty)}
+                        >
                             Make Your Reservation
                         </button>
                     </Form>
                 )}
             </Formik>
-        </div>
+        </section>
   );
 };
 
