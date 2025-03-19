@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer} from "react";
+import React, { useEffect, useReducer, useState} from "react";
 import { useNavigate } from "react-router-dom";
 import BookingForm from "../components/BookingForm";
 import { submitAPI } from "../utils/api";
@@ -6,15 +6,17 @@ import { initializeTimes, updatesTimes } from "../utils/times";
 
 const Main = () => {
     const [availableTimes, dispatch] = useReducer(updatesTimes, []);
+    const [selectedDate, setSelectedDate] = useState(new Date());
     const navigate = useNavigate();
 
     useEffect(() => {
         const fetchInitialTimes = async () => {
-            const times = await initializeTimes(); // Appel de la fonction async
+            const times = await initializeTimes(selectedDate); // Appel de la fonction async
             dispatch({ type: "SET_AVAILABLE_TIMES", payload: times });
         };
         fetchInitialTimes();
-    }, []); // Le tableau vide [] signifie que ce useEffect ne se déclenche qu'une fois lors du montage du composant
+    }, [selectedDate]);
+
 
     const submitForm = async (formData) => {
         try {
@@ -31,9 +33,18 @@ const Main = () => {
         }
     };
 
+    const handleDateChange = (date) => {
+        setSelectedDate(new Date(date)); // Met à jour la date sélectionnée
+    };
+
     return (
         <div>
-            <BookingForm availableTimes={availableTimes} dispatch={dispatch} onSubmit={submitForm} />
+            <BookingForm
+                availableTimes={availableTimes}
+                dispatch={dispatch}
+                onSubmit={submitForm}
+                onDateChange={handleDateChange}
+            />
         </div>
     );
 };

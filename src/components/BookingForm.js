@@ -2,7 +2,7 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
-const BookingForm = ({ availableTimes, dispatch, onSubmit  }) => {
+const BookingForm = ({ availableTimes, dispatch, onSubmit, onDateChange  }) => {
     const today = new Date().toISOString().split("T")[0]; //Date du jour
 
     const validationSchema = Yup.object({
@@ -63,6 +63,7 @@ const BookingForm = ({ availableTimes, dispatch, onSubmit  }) => {
                                 const selectedDate = e.target.value;
                                 setFieldValue("date", selectedDate);
                                 dispatch({ type: "UPDATE_DATE", payload: selectedDate });
+                                onDateChange(selectedDate);
                             }}
                             className={`input ${touched.date && errors.date ? "error-input" : ""}`}
                         />

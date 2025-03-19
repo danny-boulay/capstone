@@ -78,7 +78,7 @@ describe('HTML5 validation attributes', () => {
 
         // On déclenche le blur pour simuler la perte de focus
         fireEvent.blur(nameInput);
-        
+
         // Vérification du message d'erreur
         await waitFor(() => {
             expect(screen.getByText(/your name is too short/i)).toBeInTheDocument();
