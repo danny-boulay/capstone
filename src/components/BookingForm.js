@@ -2,6 +2,10 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
+/*
+1. Quand tous les messages d'erreurs s'affichent le form déborde sur le header et footer donc changer le vh ou autre
+2. Quand le user efface le nombre de guest, le message d'erreur est pas clutch (ex: NaN) donc à changer
+*/
 const BookingForm = ({ availableTimes, dispatch, onSubmit, onDateChange  }) => {
     const today = new Date().toISOString().split("T")[0]; //Date du jour
 

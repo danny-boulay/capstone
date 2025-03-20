@@ -48,7 +48,7 @@ function Specials() {
                                   <span className="SpecialPrice" aria-label={`Price: ${item.price}`}>{item.price}</span>
                               </div>
                               <p className="SpecialDescription">{item.description}</p>
-                              <button className="delivery-button" aria-label={`Order delivery for ${item.title}`}>Order Delivery 🚴‍♂️</button>
+                              <button className="DeliveryButton" aria-label={`Order delivery for ${item.title}`}>Order Delivery 🚴‍♂️</button>
                           </div>
                       </article>
                   ))}

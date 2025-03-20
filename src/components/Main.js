@@ -11,7 +11,7 @@ const Main = () => {
 
     useEffect(() => {
         const fetchInitialTimes = async () => {
-            const times = await initializeTimes(selectedDate); // Appel de la fonction async
+            const times = await initializeTimes(selectedDate);
             dispatch({ type: "SET_AVAILABLE_TIMES", payload: times });
         };
         fetchInitialTimes();

@@ -237,7 +237,7 @@ button:disabled:hover {
 }
 
 .HeroImage:hover {
-  transform: translateY(+17%) rotate(2deg); /* La carte se soulève et tourne légèrement */
+  transform: translateY(+19%) rotate(2deg); /* La carte se soulève et tourne légèrement */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
@@ -356,15 +356,15 @@ button:disabled:hover {
   text-align: left;
 }
 
-.delivery-button {
+.DeliveryButton {
   background: none;
-  color: black;
+  color: var(--highlight-color-2);
   font-weight: bold;
   border: none;
   cursor: pointer;
 }
 
-.delivery-button:hover {
+.DeliveryButton:hover {
   text-decoration: underline;
 }
 
@@ -497,6 +497,10 @@ button:disabled:hover {
   font-size: 2.5rem;
   font-weight: 300;
   margin: 0;
+}
+
+.About p {
+  color: var(--highlight-color-2);
 }
 
 .AboutImageContainer {
@@ -639,6 +643,7 @@ button:disabled:hover {
   margin: 0;
   padding: 0 0 1rem;
   font-size: 2.5rem;
+  color: var(--highlight-color-2);
 }
 
 .FormContainer {
@@ -646,14 +651,15 @@ button:disabled:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 80vh;
+  min-height: 50vh;
+  padding: 2rem 0rem; /* Ajoute du padding pour éviter que ça touche les bords */
   background-color: #f4f4f4;
 }
 
 .BookingForm {
   display: grid;
   gap: 1rem;
-  max-width: 350px;
+  max-width: 400px;
   padding: 2rem;
   background: white;
   border-radius: 14px;
@@ -713,4 +719,9 @@ textarea {
   padding: 0;
   font-size: 1.25rem;
   color: var(--highlight-color-2);
+}
+
+/*Not Found Page*/
+.NotFound {
+  text-align: center;
 }

@@ -8,7 +8,7 @@ const seededRandom = function (seed) {
 };
 
 export const fetchAPI = function (date) {
-    console.log("fetchAPI called with:", date, "Type:", typeof date); // ✅ Debug
+    console.log("fetchAPI called with:", date, "Type:", typeof date); // Debug
 
     //J'ai modifié cette fonction pour retourner une Promise sinon je ne pouvais pas utiliser .then
     return new Promise((resolve, reject) => {
@@ -29,13 +29,13 @@ export const fetchAPI = function (date) {
             }
         }
 
-        resolve(result); // ✅ Maintenant ça retourne une Promise
+        resolve(result); // Maintenant ça retourne une Promise
     });
 };
 
 export const submitAPI = function (formData) {
     return new Promise((resolve) => {
-        console.log("Submitting form data:", formData);
-        setTimeout(() => resolve(true), 1000); // Simule un délai de traitement
+        console.log("Submitting form data:", formData); //Debug
+        setTimeout(() => resolve(true), 200); //Simule un délai de traitement
     });
 };

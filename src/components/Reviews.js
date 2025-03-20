@@ -7,7 +7,7 @@ const reviews = [
     title: "Delicious",
     body: "Greek salad was delicious and the feta cheese was so good!",
     reviewer: "Alicia Jones",
-    date: "February 24 2025",
+    date: "February 24, 2025",
     avatar: "https://randomuser.me/api/portraits/women/44.jpg",
   },
   {
@@ -15,7 +15,7 @@ const reviews = [
     title: "Good food",
     body: "The bruschetta was good, but the lemon dessert was a bit too sweet.",
     reviewer: "Jerry Simons",
-    date: "February 18 2025",
+    date: "March 18, 2025",
     avatar: "https://randomuser.me/api/portraits/men/45.jpg",
   },
   {
@@ -23,7 +23,7 @@ const reviews = [
     title: "Incredible!",
     body: "One of the best restaurants I've been to! Food and service were outstanding.",
     reviewer: "Chelsea Baker",
-    date: "February 15 2025",
+    date: "March 15, 2025",
     avatar: "https://randomuser.me/api/portraits/women/32.jpg",
   },
 ];
@@ -45,19 +45,19 @@ const Reviews = () => {
                 <Card sx={{ maxWidth: 400, borderRadius: 3, boxShadow: 3, p: 2 }}>
                   <CardContent>
                     <Rating value={review.rating} precision={0.5} readOnly aria-label={`Rating: ${review.rating} stars`} />
-                    <Typography sx={{ fontSize: '2rem', fontWeight: 'bold', fontFamily: "'Markazi Text', sans-serif" }}>
+                    <Typography sx={{ fontSize: '2rem', fontWeight: 'bold', fontFamily: "'Markazi Text', sans-serif", color: '#333' }}>
                       {review.title}
                     </Typography>
-                    <Typography sx={{ fontSize: '1rem', fontFamily: "'Karla', sans-serif" }}>
+                    <Typography sx={{ fontSize: '1rem', fontFamily: "'Karla', sans-serif", color: '#333' }}>
                       {review.body}
                     </Typography>
                     <Box sx={{ display: 'flex', alignItems: 'center', mt: 2 }}>
                       <Avatar src={review.avatar} alt={`Avatar of ${review.reviewer}`} sx={{ width: 32, height: 32, mr: 1 }} />
                       <Box>
-                        <Typography sx={{ fontSize: '1rem', fontFamily: "'Karla', sans-serif" }}>
+                        <Typography sx={{ fontSize: '1rem', fontFamily: "'Karla', sans-serif", color: '#333' }}>
                           {review.reviewer}
                         </Typography>
-                        <Typography sx={{ fontSize: '1rem', fontFamily: "'Karla', sans-serif" }}>
+                        <Typography sx={{ fontSize: '1rem', fontFamily: "'Karla', sans-serif", color: '#333' }}>
                           {review.date}
                         </Typography>
                       </Box>
