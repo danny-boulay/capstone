@@ -7,6 +7,7 @@ Sinon, pendant les tests, quand j'importais ces fonctions depuis Main.js, jest e
 export const initializeTimes = async (selectedDate) => {
     try {
         const times = await fetchAPI(selectedDate); // 🔥 Récupération des horaires du jour via l'API
+        console.log("Fetched times:", times); // 🛠️ Debug
         return times;
     } catch (error) {
         console.error("Error initializing times:", error);

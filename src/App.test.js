@@ -4,11 +4,13 @@ import { initializeTimes, updatesTimes  } from "./utils/times";
 
 //Test de fonctionnement de initializeTimes
 describe("initializeTimes", () => {
-    it("should return a non-empty array of available times", async () => {
-        const result = await initializeTimes();
-        expect(Array.isArray(result)).toBe(true);
-        expect(result.length).toBeGreaterThan(0);
-    });
+  it("should return a non-empty array of available times", async () => {
+      const testDate = new Date("2026-01-01");
+      const result = await initializeTimes(testDate);
+
+      expect(Array.isArray(result)).toBe(true);
+      expect(result.length).toBeGreaterThan(0);
+  });
 });
 
 //Test de fonctionnement de updatesTimes
@@ -92,8 +94,11 @@ describe('HTML5 validation attributes', () => {
         // Mock du dispatch (juste une fonction vide pour les tests)
         const mockDispatch = jest.fn();
 
+        //Mock de onDateChange (juste une fonction vide pour les tests)
+        const mockOnDateChange = jest.fn();
+
         // On fournit des horaires fictifs en props
-        render(<BookingForm onSubmit={mockOnSubmit} dispatch={mockDispatch} availableTimes={["19:00", "20:00"]} />);
+        render(<BookingForm onSubmit={mockOnSubmit} dispatch={mockDispatch} availableTimes={["19:00", "20:00"]} onDateChange={mockOnDateChange} />);
 
         // Remplir le formulaire avec des valeurs valides
         fireEvent.change(screen.getByLabelText(/reservation name/i), { target: { value: "Danny" } });
